@@ -1,0 +1,26 @@
+graph basic {
+    edge -From start -To middle
+    edge -From middle -To end
+} | Export-PSGraph -ShowGraph
+
+graph g {
+    node -default @{shape='rectangle'}
+    node git @{label="This is a test";shape='folder'}
+    node github @{label="What you are seeing is an illusion"}
+
+    edge git,github,JosephDay.com,ScriptingClass.com
+    edge github -to ScriptingLanguage.com
+} | Export-PSGraph -ShowGraph
+
+graph g {
+    node -default @{shape='rectangle'}
+    node git @{label="Local git repo";shape='folder'}
+    node github @{label="GitHub.com \\master";style='filled'}
+
+    edge VSCode -to git @{label='git commit'}
+    edge git -To github @{label='git push'}
+    edge github -To JosephDay.com,ScriptingLanguage.com  @{label='trigger';style='dotted'}
+    edge DayJ.com -to Powershellscript.com @{label='build/publish'}
+    edge JosephDay.com -to AJBothe.com @{label='publish'}
+} | Export-PSGraph -ShowGraph
+
